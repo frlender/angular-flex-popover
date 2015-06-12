@@ -1,4 +1,4 @@
-# angular-flex-form
-Form with flexiable fields fitting for NoSql db written in angular.
+# angular-flex-popover
+Not satisfied with all the current popovers and I developed this one. Draggable is enabled! Compleletly freestyle templating without assumptions!
 
-Checkout example folder and [demo](http://frlender.github.io/angular-flex-form.html).
+<!--Checkout example folder and [demo](http://frlender.github.io/angular-flex-form.html).-->
