@@ -1,0 +1,23 @@
+.target{
+	position: absolute;
+	left:20%;
+	top:30%;
+}
+
+.target a{
+	cursor: pointer;
+}
+
+.target a:hover{
+	color:blue;
+}
+
+.fp-view{
+	position: absolute;
+}
+
+.target2{
+	position: absolute;
+	left:40%;
+	top:30%;
+}

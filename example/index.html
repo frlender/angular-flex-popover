@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="popoverApp">
+<head>
+	<title>test</title>
+    <!-- // <script src="libraries/jquery/jquery.min.js"></script> -->
+    <!-- <link rel='stylesheet', type='text/css', href='libraries/bootstrap/dist/css/bootstrap.min.css'> -->
+    <link rel='stylesheet', href='../css/main.css'>
+    <link rel='stylesheet', href='../bower_components/font-awesome/css/font-awesome.min.css'>
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../versioned/jquery-ui.min.js"></script>
+    <script src="../flex-popover.js"></script>
+    <script>
+
+    var app = angular.module('popoverApp',["flexPopover"]);
+
+   app.controller('indexCtrl', function($scope) {
+      $scope.data = {val:"deffg"}
+      $scope.aa = 'bbf';
+      $scope.urls = [1,2,3]
+      $scope.fetchDataFactory = function(url){
+        return function(cb){
+          cb({val:'abc'})
+        }
+      }
+  	});
+
+    </script>
+</head>
+
+<body ng-controller="indexCtrl">
+<!-- <button ng-click="print()">console.log</button> -->
+<!-- <input ng-model="data.val"> -->
+<!-- <div flex-popover-view data="data"></div> -->
+<div class="target" >
+  <a class="btn btn-primary" flex-popover draggable="true" data="fetchDataFactory(urls[0])"> ABC
+  </a>
+ </div>
+
+ <div class="target2" >
+  <a class="btn btn-primary" flex-popover draggable="true" data="fetchDataFactory(urls[0])"> ABC
+  </a>
+ </div>
+</body>
+</html>
