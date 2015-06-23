@@ -36,6 +36,9 @@ angular.module('flexPopover',[])
    return{
       link:function(scope,element,attrs){
          $(element).click(function(){
+            if(element.siblings('.fp-view-holder').length)
+               return // if there is already a popover, skip rendering a new one
+
             var holderScope = scope.$new(true),
             data = scope.$eval(attrs.data);
             holderScope.draggable = scope.$eval(attrs.draggable);
@@ -50,10 +53,9 @@ angular.module('flexPopover',[])
              }
              function render(){
                element.parent().append('<div class="fp-view-holder"><div class="fp-view" async-view="true" flex-popover-view data="data"></div></div>')
-               if(holderScope){
+               if(holderScope.draggable){
                   $('.fp-view').draggable?$('.fp-view').draggable():"No jqueryUI avaiable";
                }
-               // element.html('<div flex-popover-view data="data"></div>');
                $compile(element.siblings().contents())(holderScope);
              } 
              holderScope.$on('flexViewClose',function(){
