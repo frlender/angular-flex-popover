@@ -33,12 +33,12 @@
 <!-- <input ng-model="data.val"> -->
 <!-- <div flex-popover-view data="data"></div> -->
 <div class="target" >
-  <a class="btn btn-primary" flex-popover draggable="true" data="fetchDataFactory(urls[0])"> ABC
+  <a class="btn btn-primary" flex-popover async-view="true" draggable="true" data="fetchDataFactory(urls[0])"> ABC
   </a>
  </div>
 
  <div class="target2" >
-  <a class="btn btn-primary" flex-popover draggable="true" data="fetchDataFactory(urls[0])"> ABC
+  <a class="btn btn-primary" flex-popover template-url="template.html" draggable="true" data="fetchDataFactory(urls[0])"> ABC
   </a>
  </div>
 </body>

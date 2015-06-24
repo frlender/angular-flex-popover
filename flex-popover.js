@@ -19,8 +19,11 @@ angular.module('flexPopover',[])
             _asyncView:'=asyncView'
    		},
    		controller: ctrl,
-   		templateUrl: __currentScriptPath.substring(0, __currentScriptPath.lastIndexOf('/') + 1) 
-        + 'flex-popover.html',
+   		templateUrl: function(element,attrs){
+        return attrs.templateUrl?attrs.templateUrl:
+        __currentScriptPath.substring(0, __currentScriptPath.lastIndexOf('/') + 1) 
+        + 'flex-popover.html';
+      },
         link:function(scope,element){
          if(scope._asyncView)
           scope.$on('flexViewRendered',function(event){
@@ -42,6 +45,8 @@ angular.module('flexPopover',[])
             var holderScope = scope.$new(true),
             data = scope.$eval(attrs.data);
             holderScope.draggable = scope.$eval(attrs.draggable);
+            holderScope.templateUrl = attrs.templateUrl?attrs.templateUrl:"";
+            holderScope.asyncView = scope.$eval(attrs.asyncView);
              if(data.constructor == Function){
                data(function(asyncData){
                   holderScope.data = asyncData;
@@ -52,7 +57,7 @@ angular.module('flexPopover',[])
                render();
              }
              function render(){
-               element.parent().append('<div class="fp-view-holder"><div class="fp-view" async-view="true" flex-popover-view data="data"></div></div>')
+               element.parent().append('<div class="fp-view-holder"><div class="fp-view" template-url="'+holderScope.templateUrl+'" async-view="asyncView" flex-popover-view data="data"></div></div>')
                if(holderScope.draggable){
                   $('.fp-view').draggable?$('.fp-view').draggable():"No jqueryUI avaiable";
                }
